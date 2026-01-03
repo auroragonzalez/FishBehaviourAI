@@ -1,0 +1,26 @@
+names:
+- BEND
+- BEND_OPP
+- Coris_julis_female
+- DAN_CIRC
+- GB
+- INSF
+- LF
+- NIP_CORE
+- ROLL
+- SPA
+- core_nest
+- female
+- nest
+- other_fish
+- vegetation
+nc: 15
+roboflow:
+  license: CC BY 4.0
+  project: prova01_train_videodos
+  url: https://universe.roboflow.com/fishbehaviour/prova01_train_videodos/dataset/1
+  version: 1
+  workspace: fishbehaviour
+test: ../test/images
+train: ../train/images
+val: ../valid/images

@@ -1,0 +1,34 @@
+names:
+- AM
+- BEND
+- BEND_OPP
+- BK_SW
+- CHASE_FLEE
+- DAN_CIRC
+- DROP
+- FAN
+- GB
+- INSF
+- LF
+- MAN
+- NIP_CORE
+- NIP_IN
+- NIP_OUT
+- ROLL
+- SA
+- SPA
+- core_nest
+- female
+- nest
+- nest_material
+- vegetation
+nc: 23
+roboflow:
+  license: CC BY 4.0
+  project: dataset_video3
+  url: https://universe.roboflow.com/fishbehaviour/dataset_video3/dataset/1
+  version: 1
+  workspace: fishbehaviour
+test: ../test/images
+train: ../train/images
+val: ../valid/images

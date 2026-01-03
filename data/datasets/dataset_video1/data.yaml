@@ -1,0 +1,41 @@
+names:
+- AM
+- BEND
+- BK_SW
+- BN
+- CHASE_FLEE
+- CIRC
+- DAN_CIRC
+- FAN
+- GB
+- H_DOWN
+- H_UP
+- INS
+- INSF
+- LAND
+- LF
+- MAF
+- MAN
+- NIP_CORE
+- NIP_IN
+- NIP_OUT
+- ROLL
+- SA
+- SHAK
+- SPA
+- UP
+- core_nest
+- female
+- nest
+- other_fish
+- vegetation
+nc: 30
+roboflow:
+  license: CC BY 4.0
+  project: 01prova_train_video1
+  url: https://universe.roboflow.com/fishbehaviour/01prova_train_video1/dataset/1
+  version: 1
+  workspace: fishbehaviour
+test: ../test/images
+train: ../train/images
+val: ../valid/images

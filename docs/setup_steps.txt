@@ -1,8 +1,38 @@
+# Setup: Activate environment and download datasets
 source cnr/bin/activate
-from roboflow import Roboflow
-rf = Roboflow(api_key="YOUR_API_KEY")
-project = rf.workspace("fishbehaviour").project("prova01_train_videouno")
-version = project.version(1)
-dataset = version.download("yolov9")
-----
 
+# Download datasets from Roboflow
+# Datasets will be downloaded to data/datasets/
+python << 'EOF'
+from roboflow import Roboflow
+import os
+
+# Change to datasets directory
+os.chdir('data/datasets')
+
+rf = Roboflow(api_key="YOUR_API_KEY")
+
+# Video 1 - Main dataset with all behaviors
+project = rf.workspace("fishbehaviour").project("dataset_video1")
+version = project.version(1)
+dataset = version.download("yolov9", location="./video1")
+EOF
+
+----
+# Data Structure:
+# data/
+#   csvs/           - Time-series CSV files (tracked in git)
+#   datasets/       - Roboflow datasets (ignored in git)
+#     video1/       - Dataset for video 1
+#     video2/       - Dataset for video 2
+#     video3/       - Dataset for video 3
+#     video4/       - Dataset for video 4
+
+# Video 2
+project = rf.workspace("fishbehaviour").project("prova01_train_videodos")
+
+# Video 3
+project = rf.workspace("fishbehaviour").project("dataset_video3")
+
+# Video 4
+project = rf.workspace("fishbehaviour").project("dataset_video4-laude")

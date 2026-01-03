@@ -38,7 +38,10 @@ env/
 *~
 
 # Data files (large datasets)
-datasets/
+# Note: data/datasets/ is tracked in git (~264MB total)
+# These are the training/test/valid frame datasets
+
+# Videos (large files - NOT tracked)
 *.mp4
 *.avi
 *.mov
@@ -50,7 +53,7 @@ data/*.h5
 data/*.hdf5
 data/*.parquet
 data/*.feather
-# Keep CSV files as they're small (timeVideo*.csv)
+# Keep CSV files in data/csvs/ (timeVideo*.csv)
 
 # Model weights (large files)
 *.pt
