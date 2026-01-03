@@ -126,19 +126,22 @@ pip install -r requirements.txt
 
 ### Configuration
 
-1. **Roboflow Setup** (for downloading datasets):
+1. **Datasets**:
+   - **All datasets are already included** in this repository under [data/datasets/](data/datasets/) (~264MB total)
+   - You can use them directly without downloading from Roboflow
+   - The behavioral annotation CSVs are also included in [data/csvs/](data/csvs/)
+
+2. **Roboflow Setup** (optional - only if you want to update/re-download datasets):
    - See [docs/setup_steps.txt](docs/setup_steps.txt) for Roboflow API configuration
    - Configure your API key to download datasets from Roboflow
-
-2. **Data Preparation**:
-   - The behavioral annotation CSVs are included in [data/csvs/](data/csvs/)
-   - Datasets can be downloaded from Roboflow but they are also included in this repository for easing its use
 
 ## Usage
 
 ### 1. Data Preparation
 
-Download datasets from Roboflow using the data preparation notebook:
+**The datasets are already included in the repository** under `data/datasets/`, so you can skip this step and proceed directly to training!
+
+If you need to update or re-download datasets from Roboflow, you can use the data preparation notebook:
 
 ```bash
 jupyter notebook notebooks/training/00_data_preparation.ipynb
