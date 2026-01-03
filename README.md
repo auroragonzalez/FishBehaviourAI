@@ -79,7 +79,7 @@ pip install -r requirements.txt
 
 ### Configuration
 
-See `docs/setup_steps.txt` for Roboflow API configuration.
+See `docs/setup_steps.txt` for Roboflow API configuration and to download the images from Roboflow of the different videos
 
 ## Usage
 
@@ -121,7 +121,7 @@ files = sorted(os.listdir(directory), key=natural_sort_key)
 
 For more detailed usage examples, see `docs/USAGE.md`.
 
-## 📈 Results
+## Results
 
 Training results and model weights are stored in:
 - `results/training_runs/detect/` - Individual training runs
@@ -132,7 +132,7 @@ Each training run contains:
 - `results.csv` - Training metrics
 - `weights/` - Model weights (best.pt, last.pt)
 
-## 🔬 Experiments
+## Experiments
 
 The following experiments are documented in the notebooks:
 
@@ -140,29 +140,21 @@ The following experiments are documented in the notebooks:
 2. **Combined Training**: Videos 1-3 combined training
 3. **Temporal Analysis**: Detection patterns over time (T13, T15)
 
-## 📝 Citation
+## Citation
 
 If you use this code in your research, please cite:
 
-```bibtex
-@article{fishbehaviour2025,
-  title={Fish Behaviour Detection},
-  author={[Your Name]},
-  journal={[Journal Name]},
-  year={2025}
-}
-```
+<TO BE UPDATED AFTER PUBLICATION>
 
-## 📧 Contact
+## Contact
 
-For questions or issues, please open an issue in the repository.
+For questions or issues, please open an issue in the repository or contact the main authors: <aurora.gonzalez2@um.es> and <s.caruso@um.es>
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - YOLOv9 implementation
 - Roboflow for dataset management
-- [Add other acknowledgments]
+- ThinInAzul project
 
-## 📄 License
 
-[Add your license here]
+
