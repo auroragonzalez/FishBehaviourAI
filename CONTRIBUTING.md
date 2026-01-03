@@ -29,7 +29,6 @@ Standalone execution scripts and legacy code.
 Configuration files for experiments and models.
 
 ### Docs (`docs/`)
-- Paper PDF
 - Usage documentation
 - Setup instructions
 
