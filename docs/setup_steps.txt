@@ -1,0 +1,8 @@
+source cnr/bin/activate
+from roboflow import Roboflow
+rf = Roboflow(api_key="YOUR_API_KEY")
+project = rf.workspace("fishbehaviour").project("prova01_train_videouno")
+version = project.version(1)
+dataset = version.download("yolov9")
+----
+
