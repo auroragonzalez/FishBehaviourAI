@@ -16,12 +16,28 @@ This repository contains the code and experiments for the paper "AI-Driven Analy
 
 ## Project Structure
 
-```
-.
-├── src/                          # Source code modules
-│   ├── __init__.py
-│   ├── visualization.py          # Visualization utilities (detection plots)
-│   └── data_utils.py             # Data processing utilities (Roboflow integration)
+├── assets/                       # Generated outputs # Saved images from notebooks
+├── configs/                      # Configuration files
+├── data/                         # Datasets and annotations
+│   ├── csvs/                     # Behavioral time-series data
+│   │   ├── timeVideo1.csv
+│   │   ├── timeVideo2.csv
+│   │   ├── timeVideo3.csv
+│   │   └── timeVideo4.csv
+│   ├── datasets/                 # YOLO training datasets (from Roboflow)
+│   │   ├── dataset_video1/       # Video 1 dataset (train/valid/test splits)
+│   │   ├── dataset_Video2/       # Video 2 dataset (train/valid/test splits)
+│   │   ├── dataset_Video3/       # Video 3 dataset (train/valid/test splits)
+│   │   └── dataset_video4/       # Video 4 dataset (train/valid/test splits)
+│   └── README.md                 # Data directory documentation
+|     ├── timeVideo1.csv
+|     ├── timeVideo2.csv
+|      ├── timeVideo3.csv 
+      ├── timeVideo4.csv  	
+│   
+├── docs/                         # Documentation
+│   ├── USAGE.md                  # Usage examples
+│   └── setup_steps.txt           # Setup instructions
 │
 ├── notebooks/                    # Jupyter notebooks for experiments
 │   ├── training/                 # Model training & preparation
@@ -43,48 +59,29 @@ This repository contains the code and experiments for the paper "AI-Driven Analy
 │       ├── Video3MarkovChainOrderEstimation.ipynb
 │       └── Video4MarkovChainOrderEstimation.ipynb
 │
-├── data/                         # Datasets and annotations
-│   ├── csvs/                     # Behavioral time-series data
-│   │   ├── timeVideo1.csv
-│   │   ├── timeVideo2.csv
-│   │   ├── timeVideo3.csv
-│   │   └── timeVideo4.csv
-│   ├── datasets/                 # YOLO training datasets (from Roboflow)
-│   │   ├── dataset_video1/       # Video 1 dataset (train/valid/test splits)
-│   │   ├── dataset_Video2/       # Video 2 dataset
-│   │   ├── dataset_Video3/       # Video 3 dataset
-│   │   └── dataset_video4/       # Video 4 dataset
-│   └── README.md                 # Data directory documentation
 │
 ├── results/                      # Experiment results
-│   ├── training_runs/            # YOLO training outputs
-│   ├── validation_runs/          # Validation results
+│   ├── training_runs/            # YOLO training outputs (training artifacts and intermediate files, regenerated while training ignored in .gitignore)
+│   ├── validation_runs/          # Validation results (training artifacts and intermediate files, regenerated while training ignored in .gitignore)
 │   ├── final_experiments/        # Final experiments for publication
-│   └── archived_runs/            # Archived experiment runs
+│   └── archived_runs/            # Archived experiment runs (training artifacts and intermediate files, regenerated while training ignored in .gitignore)
 │
 ├── runs/                         # YOLO detection outputs
-│   └── detect/                   # Detection results from inference
+│   └── detect/                   # Detection results from inference organised in subfolders (train, train2,...etc)
 │
-├── assets/                       # Generated outputs
-│   ├── images/                   # Saved images from notebooks
-│   ├── plots/                    # Generated plots and figures
-│   └── videos/                   # Processed video outputs
+├── src/                          # Source code modules
+│   ├── __init__.py
+│   ├── visualization.py          # Visualization utilities (detection plots)
+│   └── data_utils.py             # Data processing utilities (Roboflow integration)
 │
-├── configs/                      # Configuration files
-│   ├── models/                   # Model architecture configs
-│   ├── training/                 # Training parameter configs
-│   └── data/                     # Dataset configs
-│
-├── docs/                         # Documentation
-│   ├── setup_steps.txt           # Setup instructions
-│   └── USAGE.md                  # Usage examples
 │
 ├── cnr/                          # Python virtual environment
-├── yolov9c.pt                    # Pre-trained YOLOv9 weights
+├── yolov9c.pt                    # Pre-trained YOLOv9 weights that are not included in this repository due to their size. Download them from: https://github.com/WongKinYiu/yolov9
 ├── requirements.txt              # Python dependencies
 └── README.md
-```
-
+`
+`
+`
 ## Features
 
 - **YOLOv9-based Fish Detection**: Custom-trained models for detecting fish in underwater videos
@@ -123,6 +120,13 @@ cnr\Scripts\activate.bat  # On Windows
 ```bash
 pip install -r requirements.txt
 ```
+
+4. Download pre-trained YOLOv9 weights:
+```bash
+wget https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-c.pt -O yolov9c.pt
+```
+
+Alternatively, download manually from [YOLOv9 releases](https://github.com/WongKinYiu/yolov9/releases) and place the file in the project root directory as `yolov9c.pt`.
 
 ### Configuration
 

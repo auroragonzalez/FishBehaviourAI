@@ -19,7 +19,3 @@ plot_detections_over_time(
     title="Fish Detections Over Time - Video T1"
 )
 ```
-
-## Legacy Script
-
-The original analysis script is preserved in `scripts/legacy_analysis.py` for reference.

@@ -13,14 +13,14 @@ data/
 │   └── timeVideo4.csv
 │
 └── datasets/                # Roboflow training datasets (ignored in git)
-    ├── video1/              # Dataset from video 1
+    ├── dataset_video1/              # Dataset from video 1
     │   ├── train/
     │   ├── valid/
     │   ├── test/
     │   └── data.yaml
-    ├── video2/              # Dataset from video 2
-    ├── video3/              # Dataset from video 3
-    └── video4/              # Dataset from video 4
+    ├── dataset_Video2/              # Dataset from video 2
+    ├── dataset_Video3/              # Dataset from video 3
+    └── dataset_video4/              # Dataset from video 4
 ```
 
 ## CSV Files (csvs/)
