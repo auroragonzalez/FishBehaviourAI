@@ -92,7 +92,7 @@ This repository contains the code and experiments for the paper "AI-Driven Analy
 ```
 
 **Note**: The `yolov9c.pt` file is not included in the repository due to its size. See installation instructions below to download it.
-```
+
 ## Features
 
 - **YOLOv9-based Fish Detection**: Custom-trained models for detecting fish in underwater videos
