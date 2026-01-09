@@ -16,10 +16,24 @@ This repository contains the code and experiments for the paper "AI-Driven Analy
 
 ## Project Structure
 
-├── assets/                       # Generated outputs # Saved images from notebooks
+```
+.
+├── assets/                       # Generated outputs
+│   ├── images/                   # Saved images from notebooks
+│   ├── plots/                    # Generated plots and figures
+│   └── videos/                   # Processed video outputs
+│
 ├── configs/                      # Configuration files
+│   ├── data/                     # Dataset configs
+│   ├── models/                   # Model architecture configs
+│   └── training/                 # Training parameter configs
+│
 ├── data/                         # Datasets and annotations
-│   ├── csvs/                     # Behavioral time-series data
+│   ├── timeVideo1.csv            # Behavioral time-series data (Video 1)
+│   ├── timeVideo2.csv            # Behavioral time-series data (Video 2)
+│   ├── timeVideo3.csv            # Behavioral time-series data (Video 3)
+│   ├── timeVideo4.csv            # Behavioral time-series data (Video 4)
+│   ├── csvs/                     # Behavioral time-series data (copies)
 │   │   ├── timeVideo1.csv
 │   │   ├── timeVideo2.csv
 │   │   ├── timeVideo3.csv
@@ -30,58 +44,55 @@ This repository contains the code and experiments for the paper "AI-Driven Analy
 │   │   ├── dataset_Video3/       # Video 3 dataset (train/valid/test splits)
 │   │   └── dataset_video4/       # Video 4 dataset (train/valid/test splits)
 │   └── README.md                 # Data directory documentation
-|     ├── timeVideo1.csv
-|     ├── timeVideo2.csv
-|      ├── timeVideo3.csv 
-      ├── timeVideo4.csv  	
-│   
+│
 ├── docs/                         # Documentation
 │   ├── USAGE.md                  # Usage examples
 │   └── setup_steps.txt           # Setup instructions
 │
 ├── notebooks/                    # Jupyter notebooks for experiments
-│   ├── training/                 # Model training & preparation
-│   │   ├── 00_data_preparation.ipynb
-│   │   ├── 01_experiments.ipynb
-│   │   └── 02_models_training.ipynb
 │   ├── analysis/                 # Behavioral analysis
-│   │   ├── TimeBudgetVideo1.ipynb
-│   │   ├── TimeBudgetVideo2.ipynb
-│   │   ├── TimeBudgetVideo3.ipynb
-│   │   ├── TimeBudgetVideo4.ipynb
 │   │   ├── NormalizedTransitionsVideo1.ipynb
 │   │   ├── NormalizedTransitionsVideo2.ipynb
 │   │   ├── NormalizedTransitionsVideo3.ipynb
-│   │   └── NormalizedTransitionsVideo4.ipynb
-│   └── markov_chain/             # Markov chain order estimation
-│       ├── Video1MarkovChainOrderEstimation.ipynb
-│       ├── Video2MarkovChainOrderEstimation.ipynb
-│       ├── Video3MarkovChainOrderEstimation.ipynb
-│       └── Video4MarkovChainOrderEstimation.ipynb
-│
+│   │   ├── NormalizedTransitionsVideo4.ipynb
+│   │   ├── TimeBudgetVideo1.ipynb
+│   │   ├── TimeBudgetVideo2.ipynb
+│   │   ├── TimeBudgetVideo3.ipynb
+│   │   └── TimeBudgetVideo4.ipynb
+│   ├── markov_chain/             # Markov chain order estimation
+│   │   ├── Video1MarkovChainOrderEstimation.ipynb
+│   │   ├── Video2MarkovChainOrderEstimation.ipynb
+│   │   ├── Video3MarkovChainOrderEstimation.ipynb
+│   │   └── Video4MarkovChainOrderEstimation.ipynb
+│   └── training/                 # Model training & preparation
+│       ├── 00_data_preparation.ipynb
+│       ├── 01_experiments.ipynb
+│       └── 02_models_training.ipynb
 │
 ├── results/                      # Experiment results
-│   ├── training_runs/            # YOLO training outputs (training artifacts and intermediate files, regenerated while training ignored in .gitignore)
-│   ├── validation_runs/          # Validation results (training artifacts and intermediate files, regenerated while training ignored in .gitignore)
+│   ├── archived_runs/            # Archived experiment runs
 │   ├── final_experiments/        # Final experiments for publication
-│   └── archived_runs/            # Archived experiment runs (training artifacts and intermediate files, regenerated while training ignored in .gitignore)
+│   ├── training_runs/            # YOLO training outputs
+│   └── validation_runs/          # Validation results
 │
 ├── runs/                         # YOLO detection outputs
-│   └── detect/                   # Detection results from inference organised in subfolders (train, train2,...etc)
+│   └── detect/                   # Detection results from inference
 │
 ├── src/                          # Source code modules
 │   ├── __init__.py
-│   ├── visualization.py          # Visualization utilities (detection plots)
-│   └── data_utils.py             # Data processing utilities (Roboflow integration)
-│
+│   ├── data_utils.py             # Data processing utilities (Roboflow integration)
+│   └── visualization.py          # Visualization utilities (detection plots)
 │
 ├── cnr/                          # Python virtual environment
-├── yolov9c.pt                    # Pre-trained YOLOv9 weights that are not included in this repository due to their size. Download them from: https://github.com/WongKinYiu/yolov9
+├── CONTRIBUTING.md               # Contribution guidelines
+├── LICENSE                       # License file
+├── README.md                     # This file
 ├── requirements.txt              # Python dependencies
-└── README.md
-`
-`
-`
+└── yolov9c.pt                    # Pre-trained YOLOv9 weights (download separately)
+```
+
+**Note**: The `yolov9c.pt` file is not included in the repository due to its size. See installation instructions below to download it.
+```
 ## Features
 
 - **YOLOv9-based Fish Detection**: Custom-trained models for detecting fish in underwater videos
@@ -177,36 +188,10 @@ Training results are saved to `results/training_runs/` with:
 - Training metrics (`results.csv`)
 - Configuration (`args.yaml`)
 
-### 3. Running Detection
+They are not included in the repository given their weight but it is ready to be run
 
-Run inference on videos using trained models:
 
-```python
-from ultralytics import YOLO
-
-model = YOLO('results/training_runs/detect/train/weights/best.pt')
-results = model.predict(source='path/to/video.mp4', save=True, save_txt=True)
-```
-
-### 4. Analyzing Detections Over Time
-
-Visualize detection patterns using the visualization module:
-
-```python
-from src.visualization import plot_detections_over_time
-
-plot_detections_over_time(
-    video_path="path/to/video.mp4",
-    labels_dir="runs/detect/predict/labels",
-    output_prefix="Video1",
-    tick_interval=10,
-    title="Fish Detections Over Time - Video 1"
-)
-```
-
-This generates plots showing the number of fish detected per frame over the video timeline.
-
-### 5. Behavioral Analysis
+### 3. Behavioral Analysis
 
 The project includes three types of behavioral analysis notebooks:
 
@@ -240,9 +225,8 @@ The typical workflow for using this project:
 1. **Setup**: Install dependencies and configure Roboflow API
 2. **Data Download**: Download datasets from Roboflow using `00_data_preparation.ipynb`
 3. **Training**: Train YOLOv9 models on fish detection using `01_experiments.ipynb` and `02_models_training.ipynb`
-4. **Inference**: Run trained models on videos to generate detections
-5. **Temporal Analysis**: Visualize detection patterns over time using `src.visualization`
-6. **Behavioral Analysis**: 
+4. **Inference**: Run trained models on videos to generate detections (videos not included in the project, just preprocessed frames, contact us if you want to have access to the original unprocessed videos or use your own video with our model)
+5. **Behavioral Analysis**: 
    - Analyze time budgets (proportion of time in each state)
    - Compute transition matrices (probability of state changes)
    - Estimate Markov chain order (memory depth of behavior)
@@ -275,7 +259,6 @@ Detection outputs from inference are saved in `runs/detect/`:
 Analysis results are saved in `assets/`:
 - **plots/**: Generated figures (time budgets, transition matrices, detection plots)
 - **images/**: Exported images from notebooks
-- **videos/**: Processed video outputs
 
 ## Datasets
 
